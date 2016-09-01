@@ -54,6 +54,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -62,12 +63,22 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Sitecore\Admin\MediaUploader.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Presenters\MediaUploaderPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sitecore\Admin\MediaUploader.aspx.cs">
+      <DependentUpon>MediaUploader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sitecore\Admin\MediaUploader.aspx.designer.cs">
+      <DependentUpon>MediaUploader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IMediaUploaderView.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\Include\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
