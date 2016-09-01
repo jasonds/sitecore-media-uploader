@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7E3C5ABF-624F-41D5-B990-C6EA26815C85}"
+	ProjectSection(SolutionItems) = preProject
+		..\.gitignore = ..\.gitignore
+		..\LICENSE = ..\LICENSE
+		..\README.md = ..\README.md
+		Settings.StyleCop = Settings.StyleCop
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Packages", "Packages", "{BE6B8194-A23A-462B-9B07-70978BFA0A7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.MediaUploader", "MediaUploader\Sitecore.SharedSource.MediaUploader.csproj", "{DF9C6A2E-80F8-425E-846D-3F439B617C3D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF9C6A2E-80F8-425E-846D-3F439B617C3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF9C6A2E-80F8-425E-846D-3F439B617C3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF9C6A2E-80F8-425E-846D-3F439B617C3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF9C6A2E-80F8-425E-846D-3F439B617C3D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
