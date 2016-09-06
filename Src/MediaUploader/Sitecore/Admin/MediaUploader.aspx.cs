@@ -1,14 +1,10 @@
 ﻿using System;
 using Sitecore.sitecore.admin;
-using Sitecore.SharedSource.MediaUploader.Presenters;
-using Sitecore.SharedSource.MediaUploader.Views;
 
 namespace Sitecore.SharedSource.MediaUploader.Sitecore.Admin
 {
-    public partial class MediaUploader : AdminPage, IMediaUploaderView
+    public partial class MediaUploader : AdminPage
     {
-        private MediaUploaderPresenter _presenter;
-
         protected override void OnInit(EventArgs args)
         {
             this.CheckSecurity(true);
@@ -19,13 +15,8 @@ namespace Sitecore.SharedSource.MediaUploader.Sitecore.Admin
         {
             base.OnLoad(e);
 
-            // Initialize the presenter
-            this._presenter = new MediaUploaderPresenter(this);
-
-            if (!this.IsPostBack)
-            {
-                this._presenter.Initialize();
-            }
+            // Wire events
+            this.ucMediaUploaderBlobUpload.BlobsUploaded += (sender, args) => this.ucMediaUploaderBlobList.Refresh();
         }
     }
 }

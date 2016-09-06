@@ -7,36 +7,36 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sitecore.SharedSource.MediaUploader.Sitecore.Admin {
+namespace Sitecore.SharedSource.MediaUploader.Sitecore.Admin.UserControls {
     
     
-    public partial class MediaUploader {
+    public partial class MediaUploaderBlobList {
         
         /// <summary>
-        /// mediaUploaderForm control.
+        /// tbSearchPrefix control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm mediaUploaderForm;
+        protected global::System.Web.UI.WebControls.TextBox tbSearchPrefix;
         
         /// <summary>
-        /// ucMediaUploaderBlobList control.
+        /// btnSearchSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Sitecore.SharedSource.MediaUploader.Sitecore.Admin.UserControls.MediaUploaderBlobList ucMediaUploaderBlobList;
+        protected global::System.Web.UI.WebControls.Button btnSearchSubmit;
         
         /// <summary>
-        /// ucMediaUploaderBlobUpload control.
+        /// rptBlobList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Sitecore.SharedSource.MediaUploader.Sitecore.Admin.UserControls.MediaUploaderBlobUpload ucMediaUploaderBlobUpload;
+        protected global::System.Web.UI.WebControls.Repeater rptBlobList;
     }
 }
