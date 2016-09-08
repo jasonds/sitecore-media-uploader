@@ -33,24 +33,6 @@ namespace Sitecore.SharedSource.MediaUploader.Sitecore.Admin.UserControls
                 this.rptBlobList.DataSource = result;
             }
         }
-        
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-
-            // Initialize the presenter
-            this._presenter = new MediaUploaderBlobListPresenter(this, new MediaUploaderBlobListService());
-            
-            // Wire events
-            this.btnSearchSubmit.Click += (sender, args) => { this._presenter.GetBlobs(this.tbSearchPrefix.Text); };
-            this.rptBlobList.ItemCommand += (sender, args) => { this._presenter.OnItemCommand(sender, args); };
-
-            if (!this.IsPostBack)
-            {
-                // Load initial data
-                this._presenter.GetBlobs(this.tbSearchPrefix.Text);
-            }
-        }
 
         public override void DataBind()
         {
@@ -61,6 +43,24 @@ namespace Sitecore.SharedSource.MediaUploader.Sitecore.Admin.UserControls
         public void Refresh()
         {
             this._presenter.GetBlobs(this.tbSearchPrefix.Text);
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            // Initialize the presenter
+            this._presenter = new MediaUploaderBlobListPresenter(this, new MediaUploaderBlobListService());
+
+            // Wire events
+            this.btnSearchSubmit.Click += (sender, args) => { this._presenter.GetBlobs(this.tbSearchPrefix.Text); };
+            this.rptBlobList.ItemCommand += (sender, args) => { this._presenter.OnItemCommand(sender, args); };
+
+            if (!this.IsPostBack)
+            {
+                // Load initial data
+                this._presenter.GetBlobs(this.tbSearchPrefix.Text);
+            }
         }
     }
 }

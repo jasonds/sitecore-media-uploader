@@ -12,6 +12,14 @@ namespace Sitecore.SharedSource.MediaUploader.Sitecore.Admin.UserControls
 
         public event EventHandler BlobsUploaded;
 
+        public void OnBlobsUploaded()
+        {
+            if (this.BlobsUploaded != null)
+            {
+                this.BlobsUploaded(this, EventArgs.Empty);
+            }
+        }
+
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -20,15 +28,7 @@ namespace Sitecore.SharedSource.MediaUploader.Sitecore.Admin.UserControls
             this._presenter = new MediaUploaderBlobUploadPresenter(this, new MediaUploaderBlobUploadService());
 
             // Wire events
-            this.btnUpload.Click += (sender, args) => { this._presenter.UploadBlobs(Request.Files); };
-        }
-
-        public void OnBlobsUploaded()
-        {
-            if (this.BlobsUploaded != null)
-            {
-                this.BlobsUploaded(this, EventArgs.Empty);
-            }
+            this.btnUpload.Click += (sender, args) => { this._presenter.UploadBlobs(this.Request.Files); };
         }
     }
 }

@@ -30,7 +30,7 @@ namespace Sitecore.SharedSource.MediaUploader.Presenters
             }
 
             List<BlobUpload> blobs = new List<BlobUpload>();
-            for(int i = 0; i < files.Count; i++)
+            for (int i = 0; i < files.Count; i++)
             {
                 HttpPostedFileBase file = new HttpPostedFileWrapper(files[i]);
                 string name = Path.GetFileName(file.FileName);
