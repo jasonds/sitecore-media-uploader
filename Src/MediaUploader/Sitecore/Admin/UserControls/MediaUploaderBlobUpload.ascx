@@ -13,7 +13,7 @@
 <div class="container-fluid">
     <div class="row margin-bottom-md">
         <div class="col-md-3">
-            <asp:FileUpload runat="server" ID="fuBlobs" AllowMultiple="true"  />
+            <asp:FileUpload runat="server" ID="fuBlobs" AllowMultiple="true" />
         </div>
         <div class="col-md-3">
             <asp:Button runat="server" ID="btnUpload" CssClass="btn btn-primary" OnClientClick="onUpload()" UseSubmitBehavior="false" Text="Upload Files" />

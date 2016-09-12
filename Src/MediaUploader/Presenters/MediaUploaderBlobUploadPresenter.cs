@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Web;
 using Sitecore.SharedSource.MediaUploader.Models;
 using Sitecore.SharedSource.MediaUploader.Services;
@@ -31,16 +32,25 @@ namespace Sitecore.SharedSource.MediaUploader.Presenters
                 {
                     HttpPostedFile postedFile = files[i];
                     HttpPostedFileBase file = new HttpPostedFileWrapper(postedFile);
-                    string name = Path.GetFileName(file.FileName);
-                    blobs.Add(new BlobUpload
+
+                    if (!string.IsNullOrEmpty(file.FileName))
                     {
-                        Name = string.Format("{0}_{1}", DateTime.Now.ToString("yyyyMMdd_HHmmss_fff"), name),
-                        FilePath = file.FileName,
-                        InputStream = file.InputStream
-                    });
+                        string name = Path.GetFileName(file.FileName);
+
+                        blobs.Add(new BlobUpload
+                        {
+                            Name = string.Format("{0}_{1}", DateTime.Now.ToString("yyyyMMdd_HHmmss_fff"), name),
+                            FilePath = file.FileName,
+                            InputStream = file.InputStream
+                        });
+                    }
                 }
 
-                this._service.Upload(blobs);
+                // Upload blobs if necessary
+                if (blobs.Any())
+                {
+                    this._service.Upload(blobs);
+                }
             }
 
             this._view.OnBlobsUploaded();
