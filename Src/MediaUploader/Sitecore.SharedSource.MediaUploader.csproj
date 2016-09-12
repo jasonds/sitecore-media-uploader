@@ -76,6 +76,9 @@
     <Reference Include="Sitecore.Kernel">
       <HintPath>..\..\Lib\Sitecore.8.1.160302\Sitecore.Kernel.dll</HintPath>
     </Reference>
+    <Reference Include="Sitecore.Logging">
+      <HintPath>..\..\Lib\Sitecore.8.1.160302\Sitecore.Logging.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
@@ -92,6 +95,7 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Sitecore\Admin\Assets\loading_spinner.gif" />
     <Content Include="Sitecore\Admin\MediaUploader.aspx" />
     <Content Include="Sitecore\Admin\UserControls\MediaUploaderBlobList.ascx" />
   </ItemGroup>
@@ -149,6 +153,7 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

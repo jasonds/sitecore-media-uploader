@@ -16,6 +16,20 @@
         .margin-bottom-md {
             margin-bottom: 20px;
         }
+
+        .loading-indicator-container {
+            display: none;
+            text-align: center;
+        }
+
+        .loading-indicator-container.shown {
+            display: block;
+        }
+        
+        .loading-indicator {
+            margin: 0 auto;
+            max-width: 100px;
+        }
     </style>
 </head>
 <body>

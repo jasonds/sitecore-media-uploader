@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.WindowsAzure.Storage.Blob;
+using Sitecore.Diagnostics;
 using Sitecore.SharedSource.MediaUploader.Models;
 
 namespace Sitecore.SharedSource.MediaUploader.Services
@@ -27,9 +28,9 @@ namespace Sitecore.SharedSource.MediaUploader.Services
                     };
                 }));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // ignored
+                Log.Error("Error retrieving blobs", ex);
             }
 
             return results;
@@ -43,9 +44,9 @@ namespace Sitecore.SharedSource.MediaUploader.Services
                 CloudBlockBlob blockBlob = container.GetBlockBlobReference(blobName);
                 blockBlob.Delete();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // ignored
+                Log.Error("Error deleting blob with name: " + blobName, ex);
             }
         }
     }

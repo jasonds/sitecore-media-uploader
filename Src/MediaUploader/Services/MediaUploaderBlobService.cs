@@ -1,5 +1,7 @@
-﻿using Microsoft.WindowsAzure.Storage;
+﻿using System;
+using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
+using Sitecore.Diagnostics;
 
 namespace Sitecore.SharedSource.MediaUploader.Services
 {
@@ -21,16 +23,24 @@ namespace Sitecore.SharedSource.MediaUploader.Services
 
         protected CloudBlobContainer GetContainer()
         {
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(this.AzureStorageConnectionString);
-            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-            CloudBlobContainer container = blobClient.GetContainerReference(this.AzureStorageContainerName);
-            container.CreateIfNotExists();
-            container.SetPermissions(new BlobContainerPermissions
+            try
             {
-                PublicAccess = BlobContainerPublicAccessType.Blob
-            });
+                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(this.AzureStorageConnectionString);
+                CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+                CloudBlobContainer container = blobClient.GetContainerReference(this.AzureStorageContainerName);
+                container.CreateIfNotExists();
+                container.SetPermissions(new BlobContainerPermissions
+                {
+                    PublicAccess = BlobContainerPublicAccessType.Blob
+                });
 
-            return container;
+                return container;
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Error creating blob container", ex);
+                throw;
+            }
         }
     }
 }

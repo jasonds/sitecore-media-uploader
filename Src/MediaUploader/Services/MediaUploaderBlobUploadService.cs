@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Storage.Blob;
+using Sitecore.Diagnostics;
 using Sitecore.SharedSource.MediaUploader.Models;
 
 namespace Sitecore.SharedSource.MediaUploader.Services
@@ -25,17 +26,17 @@ namespace Sitecore.SharedSource.MediaUploader.Services
                             {
                                 blockBlob.UploadFromStream(fileStream);
                             }
-                            catch (Exception)
+                            catch (Exception ex)
                             {
-                                // ignored
+                                Log.Error("Error uploading blob with name: " + blobUpload.Name, ex);
                             }
                         }
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // ignored
+                Log.Error("Error uploading blobs", ex);
             }
         }
     }
