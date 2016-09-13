@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using Sitecore.SharedSource.MediaUploader.Models;
 using Sitecore.SharedSource.MediaUploader.Presenters;
 using Sitecore.SharedSource.MediaUploader.Services;
