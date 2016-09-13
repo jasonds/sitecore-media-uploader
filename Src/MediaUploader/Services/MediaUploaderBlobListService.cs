@@ -49,5 +49,30 @@ namespace Sitecore.SharedSource.MediaUploader.Services
                 Log.Error("Error deleting blob with name: " + blobName, ex);
             }
         }
+
+        public void DeleteMultipleBlobs(List<string> blobNames)
+        {
+            try
+            {
+                CloudBlobContainer container = this.GetContainer();
+
+                foreach (string blobName in blobNames)
+                {
+                    try
+                    {
+                        CloudBlockBlob blockBlob = container.GetBlockBlobReference(blobName);
+                        blockBlob.Delete();
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error("Error deleting blob with name: " + blobName, ex);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Error deleting multiple blobs", ex);
+            }
+        }
     }
 }

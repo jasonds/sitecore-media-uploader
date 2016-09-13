@@ -96,7 +96,14 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Sitecore\Admin\Assets\loading_spinner.gif" />
+    <Content Include="Sitecore\Admin\Assets\Local\Css\mediauploader.css">
+      <DependentUpon>mediauploader.less</DependentUpon>
+    </Content>
+    <Content Include="Sitecore\Admin\Assets\Local\Css\mediauploader.min.css">
+      <DependentUpon>mediauploader.css</DependentUpon>
+    </Content>
+    <Content Include="Sitecore\Admin\Assets\Local\Images\loading_spinner.gif" />
+    <Content Include="Sitecore\Admin\Assets\Local\Scripts\sc.mediauploader.js" />
     <Content Include="Sitecore\Admin\MediaUploader.aspx" />
     <Content Include="Sitecore\Admin\UserControls\MediaUploaderBlobList.ascx" />
   </ItemGroup>
@@ -137,6 +144,11 @@
   <ItemGroup>
     <Content Include="Sitecore\Admin\UserControls\MediaUploaderBlobUpload.ascx" />
     <Content Include="web.config" />
+    <Content Include="Sitecore\Admin\Assets\Local\Css\mediauploader.less" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

@@ -18,18 +18,25 @@ namespace Sitecore.SharedSource.MediaUploader.Services
                 {
                     if (blobUpload.InputStream != null)
                     {
-                        CloudBlockBlob blockBlob = container.GetBlockBlobReference(blobUpload.Name);
-
-                        using (var fileStream = blobUpload.InputStream)
+                        try
                         {
-                            try
+                            CloudBlockBlob blockBlob = container.GetBlockBlobReference(blobUpload.Name);
+
+                            using (var fileStream = blobUpload.InputStream)
                             {
-                                blockBlob.UploadFromStream(fileStream);
+                                try
+                                {
+                                    blockBlob.UploadFromStream(fileStream);
+                                }
+                                catch (Exception ex)
+                                {
+                                    Log.Error("Error uploading blob with name: " + blobUpload.Name, ex);
+                                }
                             }
-                            catch (Exception ex)
-                            {
-                                Log.Error("Error uploading blob with name: " + blobUpload.Name, ex);
-                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Log.Error("Error getting block blob reference for name: " + blobUpload.Name, ex);
                         }
                     }
                 }

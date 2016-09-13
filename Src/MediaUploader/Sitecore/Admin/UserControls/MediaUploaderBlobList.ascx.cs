@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 using Sitecore.SharedSource.MediaUploader.Models;
 using Sitecore.SharedSource.MediaUploader.Presenters;
 using Sitecore.SharedSource.MediaUploader.Services;
@@ -34,6 +35,14 @@ namespace Sitecore.SharedSource.MediaUploader.Sitecore.Admin.UserControls
             }
         }
 
+        public string SearchPrefix
+        {
+            get
+            {
+                return this.tbSearchPrefix.Text ?? string.Empty;
+            }
+        }
+
         public override void DataBind()
         {
             this.rptBlobList.DataBind();
@@ -42,7 +51,7 @@ namespace Sitecore.SharedSource.MediaUploader.Sitecore.Admin.UserControls
 
         public void Refresh()
         {
-            this._presenter.GetBlobs(this.tbSearchPrefix.Text);
+            this._presenter.GetBlobs();
         }
 
         protected override void OnLoad(EventArgs e)
@@ -53,13 +62,15 @@ namespace Sitecore.SharedSource.MediaUploader.Sitecore.Admin.UserControls
             this._presenter = new MediaUploaderBlobListPresenter(this, new MediaUploaderBlobListService());
 
             // Wire events
-            this.btnSearchSubmit.Click += (sender, args) => { this._presenter.GetBlobs(this.tbSearchPrefix.Text); };
+            this.btnSearchSubmit.Click += (sender, args) => { this._presenter.GetBlobs(); };
+            this.btnDeleteMultiple.Click += (sender, args) => { this._presenter.DeleteMultipleBlobs(sender, args); };
             this.rptBlobList.ItemCommand += (sender, args) => { this._presenter.OnItemCommand(sender, args); };
+            this.rptBlobList.ItemDataBound += (sender, args) => { this._presenter.OnItemDataBound(sender, args); };
 
             if (!this.IsPostBack)
             {
                 // Load initial data
-                this._presenter.GetBlobs(this.tbSearchPrefix.Text);
+                this._presenter.GetBlobs();
             }
         }
     }

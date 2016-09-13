@@ -7,6 +7,8 @@ namespace Sitecore.SharedSource.MediaUploader.Views
     {
         ICollection<Blob> Blobs { get; set; }
 
+        string SearchPrefix { get; }
+
         void DataBind();
     }
 }

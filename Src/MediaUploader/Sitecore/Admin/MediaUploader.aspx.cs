@@ -7,7 +7,7 @@ namespace Sitecore.SharedSource.MediaUploader.Sitecore.Admin
     {
         protected override void OnInit(EventArgs args)
         {
-            // this.CheckSecurity(true);
+            this.CheckSecurity(true);
             base.OnInit(args);
         }
 
