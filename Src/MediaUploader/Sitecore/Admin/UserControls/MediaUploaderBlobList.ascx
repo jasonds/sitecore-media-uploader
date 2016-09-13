@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row margin-bottom-md">
         <div class="col-xs-6">
-            <asp:TextBox ID="tbSearchPrefix" runat="server" Placeholder="Search Prefix (first 100 Results shown)" CssClass="form-control"></asp:TextBox>
+            <asp:TextBox ID="tbSearchPrefix" runat="server" Placeholder="Search Prefix (first 100 results shown)" CssClass="form-control"></asp:TextBox>
         </div>
         <div class="col-xs-1">
             <asp:Button ID="btnSearchSubmit" runat="server" CssClass="btn btn-primary" Text="Submit" />
