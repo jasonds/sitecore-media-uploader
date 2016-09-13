@@ -11,7 +11,7 @@
         </div>
         <div class="col-xs-5">
             <div class="btn-group pull-right">
-                <asp:Button ID="btnDeleteMultiple" runat="server" Text="Delete Selected" class="btn btn-danger" OnClientClick="javascript:return sc.mediauploader.onDeleteAll();" UseSubmitBehavior="false" CommandName="DeleteMultipleBlobs" />
+                <asp:Button ID="btnDeleteMultiple" runat="server" Text="Delete Selected" CssClass="btn btn-danger" OnClientClick="return sc.mediauploader.onDeleteAll();" CommandName="DeleteMultipleBlobs" />
             </div>
         </div>
     </div>
@@ -33,7 +33,7 @@
         </div>
     </div>
 
-    <asp:Repeater runat="server" ID="rptBlobList" ItemType="Sitecore.SharedSource.MediaUploader.Models.Blob">
+    <asp:Repeater ID="rptBlobList" runat="server" ItemType="Sitecore.SharedSource.MediaUploader.Models.Blob">
         <ItemTemplate>
             <div class="row margin-bottom-md">
                 <asp:HiddenField ID="hfBlobName" runat="server" Value="<%# Item.Name %>" />
@@ -42,11 +42,16 @@
                     <asp:CheckBox ID="cbSelectRow" runat="server" />
                 </div>
                 <div class="col-md-2">
-                    <asp:Button ID="btnView" runat="server" Text="View" class="btn btn-primary upload-disable" CommandName="ViewBlob" CommandArgument='<%# Newtonsoft.Json.JsonConvert.SerializeObject((Blob)Container.DataItem) %>' />
-                    <asp:Button ID="btnDelete" runat="server" Text="Delete" class="btn btn-danger upload-disable" OnClientClick="javascript:return sc.mediauploader.onDelete();" UseSubmitBehavior="false" CommandName="DeleteBlob" />
+                    <asp:Button ID="btnView" runat="server" Text="View" CssClass="btn btn-primary" CommandName="ViewBlob" CommandArgument='<%# Newtonsoft.Json.JsonConvert.SerializeObject((Blob)Container.DataItem) %>' />
+                    <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="btn btn-danger" OnClientClick="javascript:return sc.mediauploader.onDelete();" CommandName="DeleteBlob" />
                 </div>
-                <div class="col-md-4"><%# Item.Name %></div>
-                <div class="col-md-5"><%# Item.CdnEndpoint %></div>
+                <div class="col-md-4">
+                    <%# Item.Name %>
+                </div>
+                <div class="col-md-5">
+                    <i class="fa fa-clipboard fa-2x clipboard" aria-hidden="true"></i>
+                    <input type="text" readonly class="form-control" value="<%# Item.CdnEndpoint %>" />
+                </div>
             </div>
         </ItemTemplate>
     </asp:Repeater>
@@ -69,7 +74,8 @@
                 <div class="row margin-bottom-md">
                     <div class="col-xs-12">
                         <h4>CDN Endpoint</h4>
-                        <p id="blobDetailsContentCdnEndpoint"></p>
+                        <i class="fa fa-clipboard fa-2x clipboard" aria-hidden="true"></i>
+                        <input type="text" readonly class="form-control" id="blobDetailsContentCdnEndpoint" />
                     </div>
                 </div>
                 <div class="row margin-bottom-md">

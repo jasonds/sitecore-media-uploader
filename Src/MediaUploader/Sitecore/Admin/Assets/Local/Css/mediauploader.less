@@ -4,6 +4,13 @@
 
 .loading-indicator-container {
     display: none;
+    position:fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: lightgray;
+    opacity: 0.5;
     text-align: center;
 
     &.shown {
@@ -11,7 +18,24 @@
     }
 
     .loading-indicator {
-        margin: 0 auto;
-        max-width: 100px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 120px;
+        margin-top: -60px;
+        margin-left: -60px;
+    }
+}
+
+.clipboard {
+    position: absolute;
+    padding: 4px;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &+input {
+        padding-left: 40px;
     }
 }

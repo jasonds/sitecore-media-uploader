@@ -9,6 +9,7 @@
 <head runat="server">
     <title>Media Uploader</title>
     <link rel="stylesheet" href="//ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/Sitecore/Admin/Assets/Vendor/Css/font-awesome.min.css" />
     <link rel="stylesheet" href="/Sitecore/Admin/Assets/Local/Css/mediauploader.min.css" />
 </head>
 <body>
@@ -34,6 +35,11 @@
             </div>
         </div>
     </form>
+    
+    <div id="imgUploadLoadingIndicatorContainer" class="loading-indicator-container">
+        <img id="imgUploadLoadingIndicator" src="/Sitecore/Admin/Assets/Local/Images/loading_spinner.gif" class="loading-indicator" />
+    </div>
+
     <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js"></script>
     <script src="//ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/bootstrap.min.js"></script>
     <script src="/Sitecore/Admin/Assets/Local/Scripts/sc.mediauploader.js"></script>

@@ -104,6 +104,8 @@
     </Content>
     <Content Include="Sitecore\Admin\Assets\Local\Images\loading_spinner.gif" />
     <Content Include="Sitecore\Admin\Assets\Local\Scripts\sc.mediauploader.js" />
+    <Content Include="Sitecore\Admin\Assets\Vendor\Css\font-awesome.min.css" />
+    <Content Include="Sitecore\Admin\Assets\Vendor\Fonts\fontawesome-webfont.svg" />
     <Content Include="Sitecore\Admin\MediaUploader.aspx" />
     <Content Include="Sitecore\Admin\UserControls\MediaUploaderBlobList.ascx" />
   </ItemGroup>
@@ -149,6 +151,11 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <Content Include="Sitecore\Admin\Assets\Vendor\Fonts\fontawesome-webfont.eot" />
+    <Content Include="Sitecore\Admin\Assets\Vendor\Fonts\fontawesome-webfont.ttf" />
+    <Content Include="Sitecore\Admin\Assets\Vendor\Fonts\fontawesome-webfont.woff" />
+    <Content Include="Sitecore\Admin\Assets\Vendor\Fonts\fontawesome-webfont.woff2" />
+    <Content Include="Sitecore\Admin\Assets\Vendor\Fonts\FontAwesome.otf" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

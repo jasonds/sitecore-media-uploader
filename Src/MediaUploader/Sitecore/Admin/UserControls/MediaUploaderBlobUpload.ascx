@@ -3,13 +3,10 @@
 <div class="container-fluid">
     <div class="row margin-bottom-md">
         <div class="col-md-3">
-            <asp:FileUpload runat="server" ID="fuBlobs" CssClass="btn btn-default upload-disable" AllowMultiple="true" />
+            <asp:FileUpload ID="fuBlobs" runat="server" AllowMultiple="true" />
         </div>
         <div class="col-md-3">
-            <asp:Button runat="server" ID="btnUpload" CssClass="btn btn-primary upload-disable" OnClientClick="sc.mediauploader.onUpload()" UseSubmitBehavior="false" Text="Upload Files" />
+            <asp:Button ID="btnUpload" runat="server" Text="Upload Files" CssClass="btn btn-primary" OnClientClick="return sc.mediauploader.onUpload()" />
         </div>
-    </div>
-    <div runat="server" ID="imgUploadLoadingIndicatorContainer" class="loading-indicator-container">
-        <img runat="server" ID="imgUploadLoadingIndicator" src="/Sitecore/Admin/Assets/Local/Images/loading_spinner.gif" class="loading-indicator" />
     </div>
 </div>

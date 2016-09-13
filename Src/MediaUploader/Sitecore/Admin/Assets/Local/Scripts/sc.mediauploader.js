@@ -3,11 +3,12 @@
 sc.mediauploader = (function($) {
     var pub = {};
 
-    function disableInputs() {
-        var $inputs = $('.upload-disable');
-        $inputs.prop('disabled', true);
+    // Show loading overlay
+    function showLoadingOverlay() {
+        var $imgUploadLoadingIndicatorContainer = $('[id*=imgUploadLoadingIndicatorContainer]');
+        $imgUploadLoadingIndicatorContainer.addClass('shown');
     }
-
+    
     // View blob details
     pub.onViewDetails = function(details) {
         if (details) {
@@ -19,7 +20,7 @@ sc.mediauploader = (function($) {
                 var $storageEndpoint = $($modal.find('#blobDetailsContentStorageEndpoint'));
 
                 $name.text(content.Name);
-                $cdnEndpoint.text(content.CdnEndpoint);
+                $cdnEndpoint.val(content.CdnEndpoint);
                 $storageEndpoint.text(content.StorageEndpoint);
             }
         }
@@ -37,7 +38,7 @@ sc.mediauploader = (function($) {
         }
 
         // Proceed with deletion
-        disableInputs();
+        showLoadingOverlay();
 
         return true;
     };
@@ -62,20 +63,36 @@ sc.mediauploader = (function($) {
         }
 
         // Proceed with deletion
-        disableInputs();
+        showLoadingOverlay();
 
         return true;
     };
 
     // Handle blob upload client side
     pub.onUpload = function () {
-        disableInputs();
-
-        var $imgUploadLoadingIndicatorContainer = $('[id*=imgUploadLoadingIndicatorContainer]');
-        $imgUploadLoadingIndicatorContainer.addClass('shown');
+        showLoadingOverlay();
     };
 
     (function init() {
+        // Set up the copy to clipboard click
+        $("body").on("click", ".clipboard", function(e) {
+            var $target = $(e.currentTarget);
+            var $input = $target.next();
+
+            if ($input.length === 1) {
+                $input.select();
+
+                try {
+                    var result = document.execCommand('copy');
+                    if (!result) {
+                        console.error('Copying the CDN Endpoint to clipboard was unsuccessful');
+                    }
+                } catch (err) {
+                    console.error('Error copying the CDN Endpoint to clipboard.');
+                }
+            }
+        });
+
         // Wire up the check / uncheck all logic
         var $selectAllSelector = $('#mediaUploaderBlobList [id*=cbSelectAll]');
         var $selectRowSelector = $('#mediaUploaderBlobList [id*=cbSelectRow]');
