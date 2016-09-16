@@ -39,7 +39,7 @@ namespace Sitecore.SharedSource.MediaUploader.Presenters
 
                         blobs.Add(new BlobUpload
                         {
-                            Name = string.Format("{0}_{1}_{2}", DateTime.Now.ToString("yyyyMMdd_HHmmss"), name, Guid.NewGuid()),
+                            Name = string.Format("{0}_{1}_{2}", DateTime.Now.ToString("yyyyMMdd_HHmmss"), Guid.NewGuid(), name),
                             FilePath = file.FileName,
                             InputStream = file.InputStream
                         });
